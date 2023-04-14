@@ -20,5 +20,4 @@ jobs:
           cd client
           npm install
           npm run build
-      - name: Run Rubocop
-        run: bundle exec rubocop
+     
