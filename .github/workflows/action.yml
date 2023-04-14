@@ -4,7 +4,21 @@ on:
       - main
 
 jobs:
-  print_hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.4
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Build and test React app
+        run: |
+          cd client
+          npm install
+          npm run build
+     
